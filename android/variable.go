@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"lite/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -94,6 +96,9 @@ type variableProperties struct {
 		Pdk struct {
 			Enabled *bool
 		}
+
+		// include LiteOS variables
+		Lite android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -167,6 +172,9 @@ type productVariables struct {
 	Override_rs_driver *string `json:",omitempty"`
 
 	DeviceKernelHeaders []string `json:",omitempty"`
+
+	// include LiteOS variables
+	Lite android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
