@@ -27,6 +27,8 @@ import (
 
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
+
+	"lite/soong/android"
 )
 
 var Bool = proptools.Bool
@@ -466,6 +468,14 @@ func (c *config) ResourceOverlays() []string {
 		return nil
 	}
 	return *c.productVariables.ResourceOverlays
+}
+
+func (c *config) JavaSourceOverlays() string {
+	return String(c.productVariables.Lite.Java_Source_Overlays)
+}
+
+func (c *config) JavaSourceOverlayModuleWhitelist() []string {
+	return android.LiteConfig.JavaSourceOverlayModuleWhitelist
 }
 
 func (c *config) PlatformVersionName() string {
